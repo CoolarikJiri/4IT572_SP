@@ -24,8 +24,8 @@ jobs:
      steps:
         - attach_workspace:
            at: .
-        - run: pip install --upgrade pip
-        - run: pip install ansible boto boto3
+        - run: sudo pip install --upgrade pip
+        - run: sudo pip install ansible boto boto3
 
 workflows:
   version: 2.1

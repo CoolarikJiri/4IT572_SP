@@ -26,6 +26,10 @@ jobs:
            at: .
         - run: sudo pip install --upgrade pip
         - run: sudo pip install ansible boto boto3
+        - run: export AWS_ACCESS_KEY_ID="$access"
+        - run: export AWS_SECRET_ACCESS_KEY="$secret"
+        - run: export AWS_SECURITY_TOKEN="$token"
+        - run: ansible-playbook ./.circleci/aws_deploy.yml --user ubuntu --ssh-common-args='-o StrictHostKeyChecking=no'
 
 workflows:
   version: 2.1

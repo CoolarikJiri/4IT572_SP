@@ -1,6 +1,10 @@
 vse: &vse
   docker:
     - image: circleci/node:8.11.3
+    
+vseansible: &vseansible
+  docker:
+    - image: circleci/python:3.6.2
 
 version: 2.1
 jobs:
@@ -16,10 +20,12 @@ jobs:
          paths:
             - .
   deploy:
-     <<: *vse
+     <<: *vseansible
      steps:
         - attach_workspace:
            at: .
+        - run: pip install --upgrade pip
+        - run: pip install ansible boto boto3
 
 workflows:
   version: 2.1
